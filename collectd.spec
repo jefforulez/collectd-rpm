@@ -2,17 +2,17 @@
 
 Summary:	   Statistics collection daemon for filling RRD files.
 Name:		   collectd
-Version:	   5.3.0
-Release:	   5%{?dist}
+Version:	   5.4.0
+Release:	   1%{?dist}
 Source:		   http://collectd.org/files/%{name}-%{version}.tar.gz
 License:	   GPL
 Group:		   System Environment/Daemons
 BuildRoot:	   %{_tmppath}/%{name}-%{version}-root
-BuildRequires: libpcap-devel, libstatgrab-devel
-BuildRequires: libxml2-devel, libiptcdata-devel, iptables-devel
-BuildRequires: curl-devel,libidn-devel,openssl-devel
-BuildRequires: libesmtp-devel, ganglia-devel, libgcrypt-devel
-BuildRequires: yajl-devel
+BuildRequires:     libpcap-devel, libstatgrab-devel
+BuildRequires:     libxml2-devel, libiptcdata-devel, iptables-devel
+BuildRequires:     curl-devel,libidn-devel,openssl-devel
+BuildRequires:     libesmtp-devel, ganglia-devel, libgcrypt-devel
+BuildRequires:     yajl-devel, lvm2-devel
 Requires:	   libstatgrab
 Vendor:		   collectd development team <collectd@verplant.org>
 
@@ -296,6 +296,7 @@ exit 0
 %plugin_macro apcups
 %plugin_macro ascent
 %plugin_macro bind
+%plugin_macro cgroups
 %plugin_macro conntrack
 %plugin_macro contextswitch
 %plugin_macro cpufreq
@@ -320,6 +321,7 @@ exit 0
 %plugin_macro irq
 %plugin_macro load
 %plugin_macro logfile
+%plugin_macro lvm
 %plugin_macro madwifi
 %plugin_macro match_empty_counter
 %plugin_macro match_hashed
@@ -340,6 +342,7 @@ exit 0
 %plugin_macro processes
 %plugin_macro protocols
 %plugin_macro serial
+%plugin_macro statsd
 %plugin_macro swap
 %plugin_macro syslog
 %plugin_macro table
@@ -450,6 +453,11 @@ exit 0
 %plugin_macro varnish
 
 %changelog
+* Mon Aug 19 2013 Ulrich Habel <rhaen@pkgbox.de> 5.4.0-1
+- updated to upstream 5.4.0
+- enabled cgroups
+- lvm2 support
+
 * Fri May 10 2013 Ulrich Habel <me@rhaen.pm> 5.3.0-5
 - fixed missing postgresql_default.conf query file
 - fixed problem with name convention of rrd vs rrdtool
