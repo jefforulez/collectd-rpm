@@ -293,6 +293,7 @@ exit 0
 %attr(0644,root,root) %{_libdir}/%{name}/%1.la
 
 %plugin_macro aggregation
+%plugin_macro amqp
 %plugin_macro apcups
 %plugin_macro ascent
 %plugin_macro bind
